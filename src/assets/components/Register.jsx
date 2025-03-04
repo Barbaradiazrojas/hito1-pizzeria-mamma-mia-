@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import React, { useState } from 'react';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -8,23 +8,38 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log('Formulario enviado');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setMessage('El correo electrónico no es válido.');
-            return;
-        }
+
+        console.log('Validando campos vacíos');
         if (!email || !password || !confirmPassword) {
+            alert('Todos los campos son obligatorios.');
             setMessage('Todos los campos son obligatorios.');
             return;
         }
+
+        console.log('Validando formato de email');
+        if (!emailRegex.test(email)) {
+            alert('El correo electrónico no es válido.');
+            setMessage('El correo electrónico no es válido.');
+            return;
+        }
+
+        console.log('Validando longitud de contraseña');
         if (password.length < 6) {
+            alert('La contraseña debe tener al menos 6 caracteres.');
             setMessage('La contraseña debe tener al menos 6 caracteres.');
             return;
         }
+
+        console.log('Validando coincidencia de contraseñas');
         if (password !== confirmPassword) {
+            alert('Las contraseñas no coinciden.');
             setMessage('Las contraseñas no coinciden.');
             return;
         }
+
+        alert('¡Registro exitoso!');
         setMessage('¡Registro exitoso!');
     };
 

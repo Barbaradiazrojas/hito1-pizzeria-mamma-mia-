@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import React, { useState } from 'react';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -8,18 +8,26 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setMessage('El correo electrónico no es válido.');
-            return;
-        }
+
+        // Validación de campos vacíos
         if (!email || !password) {
             setMessage('Todos los campos son obligatorios.');
             return;
         }
+
+        // Validación de formato de email
+        if (!emailRegex.test(email)) {
+            setMessage('El correo electrónico no es válido.');
+            return;
+        }
+
+        // Validación de longitud de contraseña
         if (password.length < 6) {
             setMessage('La contraseña debe tener al menos 6 caracteres.');
             return;
         }
+
+        // Mensaje de éxito
         setMessage('¡Login exitoso!');
     };
 

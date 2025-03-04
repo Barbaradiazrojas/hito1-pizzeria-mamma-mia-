@@ -270,6 +270,34 @@ footer p {
   margin: auto;
   font-size: 1.5em; /* Usar em para tamaños de texto */
 }
+/* index.css */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 50px; /* Ajusta este valor según sea necesario */
+}
+
+footer {
+  border: solid 5px #FFF2CC;
+  padding: 1em;
+  width: 100%;
+  margin-top: auto; /* Esto empuja el footer al final de la página */
+}
 
 .register label, .login label {
   margin: 1vw;
